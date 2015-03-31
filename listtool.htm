@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List Tool 0.1</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="css/listtool.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>
+        <span class="glyphicon glyphicon-list-alt"> </span>
+      ListTool v0.1 <small>by Philipp Rechtsteiner</small></h1>
+
+      <div class="row">
+
+          <div class="col-xs-6 col-sm-4 col-md-2">
+            <textarea id="leftInput" class="form-control" rows="16" placeholder="Liste 1"></textarea>
+          </div>
+          <div class="col-xs-6 col-sm-4 col-md-2">
+            <textarea id="rightInput" class="form-control" rows="16" placeholder="Liste 2"></textarea>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <a class="btn btn-primary btn-lg" href="#" role="button" onClick="compareLists()">
+              <span class="glyphicon glyphicon-ok"></span>
+              Compare
+            </a>
+          </div>
+
+          <div class="col-sm-4 col-md-2">
+            <h2>Nur links</h2>
+            <p id="onlyleft"></p>
+          </div>
+          <div class="col-sm-4 col-md-2"><h2>In Beiden</h2>
+            <p id="inboth"></p>
+          </div>
+          <div class="col-sm-4 col-md-2"><h2>Nur rechts</h2>
+            <p id="onlyright"></p>
+          </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      function compareLists() {
+        var leftListString = document.getElementById('leftInput').value;
+        var rightListString = document.getElementById('rightInput').value;
+
+        var leftListArray = leftListString.split("\n");
+        var rightListArray = rightListString.split("\n");
+
+
+        for (i = 0; i < leftListArray.length; i++) {
+          var index = rightListArray.indexOf(leftListArray[i]);
+
+          if (index == -1) {
+            document.getElementById('onlyleft').innerHTML += leftListArray[i] + "<br>";
+          } else {
+            document.getElementById('inboth').innerHTML += leftListArray[i] + "<br>";
+            // remove from right list
+            delete rightListArray[index];
+          }
+        }
+        for (i = 0; i < rightListArray.length; i++) {
+          if (rightListArray[i] != undefined) {
+            document.getElementById('onlyright').innerHTML += rightListArray[i] + "<br>";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>a
