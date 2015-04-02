@@ -73,6 +73,11 @@
         var leftListArray = leftListString.split("\n");
         var rightListArray = rightListString.split("\n");
 
+        // clear the output areas
+        document.getElementById('onlyleft').innerHTML   = "";
+        document.getElementById('inboth').innerHTML     = "";
+        document.getElementById('onlyright').innerHTML  = "";
+
 
         for (i = 0; i < leftListArray.length; i++) {
           var index = rightListArray.indexOf(leftListArray[i]);
@@ -93,4 +98,4 @@
       }
     </script>
   </body>
-</html>a
+</html>
