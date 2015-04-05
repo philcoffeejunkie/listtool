@@ -42,6 +42,18 @@
               <span class="glyphicon glyphicon-ok"></span>
               Compare
             </a>
+            <br /><br />
+            <form action="csv_export.php" method="post">
+              <div class="form-group">
+                <input type="hidden" name="left" value="" id="leftstore" />
+                <input type="hidden" name="both" value="" id="bothstore" />
+                <input type="hidden" name="right" value="" id="rightstore" />
+                <button type="submit" class="btn btn-default">
+                  <span class="glyphicon glyphicon-download"></span>
+                  download CSV
+                </button>
+              </div>
+            </form>
           </div>
 
           <div class="col-sm-4 col-md-2">
@@ -95,6 +107,11 @@
             document.getElementById('onlyright').innerHTML += rightListArray[i] + "<br>";
           }
         }
+
+        // store data for export
+        document.getElementById('leftstore').value = document.getElementById('onlyleft').innerHTML;
+        document.getElementById('bothstore').value = document.getElementById('inboth').innerHTML;
+        document.getElementById('rightstore').value = document.getElementById('onlyright').innerHTML;
       }
     </script>
   </body>
